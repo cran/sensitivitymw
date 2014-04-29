@@ -12,7 +12,7 @@ Sensitivity analysis for tests, confidence intervals and estimates in matched ob
 \tabular{ll}{
 Package: \tab sensitivitymw\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
+Version: \tab 1.1\cr
 Date: \tab 2013-11-03\cr
 License: GPL-2
 LazyLoad: \tab yes\cr

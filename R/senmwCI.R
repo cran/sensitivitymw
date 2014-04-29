@@ -1,4 +1,10 @@
 senmwCI <- function(y,gamma=1,method=NULL,inner=0,trim=3,lambda=1/2,m1=1,m2=1,m=1,alpha=0.05,one.sided=TRUE,tol=NULL,interval=NULL,detail=FALSE){
+	if (is.vector(y)) {
+		y <- y[!is.na(y)]
+		treat <- y/2
+		cont <- (-y/2)
+		y <- cbind(treat, cont)
+	}
 	if (m2<m) warning("Redescending scores, m2<m, may not yield sensible confidence intervals and estimates")
 	stopifnot(m2==m)
 	if (!is.null(method)) {if (method=="l"){
