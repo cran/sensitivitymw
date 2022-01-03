@@ -1,5 +1,10 @@
 \name{senmwCI}
 \alias{senmwCI}
+\concept{Sensitivity analysis}
+\concept{Observational study}
+\concept{Causal inference}
+\concept{M-estimate}
+\concept{M-test}
 
 \title{
 Point estimate and confidence interval for sensitivity analysis in observational studies using weighted Huber-Maritz M-statistics.
@@ -8,8 +13,8 @@ Point estimate and confidence interval for sensitivity analysis in observational
 	Obtains point estimates and confidence intervals by inverting the hypothesis test in senmw.  For instance, the confidence interval is the set of hypotheses not rejected by the test.  Estimates an additive treatment effect tau.  In a sensitivity analysis with gamma>1, one obtains an interval of point estimates consistent with a bias of at most gamma, and an interval containing all of the confidence intervals that are consistent with a bias of at most gamma.  Because senmwCI calls senmw many times, senmwCI is slower than senmw.
 }
 \usage{
-senmwCI(y, gamma = 1, method = NULL, inner = 0, trim = 3, 
-	 lambda = 1/2, m1=1, m2=1, m=1, alpha=0.05, 
+senmwCI(y, gamma = 1, method = NULL, inner = 0, trim = 3,
+	 lambda = 1/2, m1=1, m2=1, m=1, alpha=0.05,
 	 one.sided=TRUE, tol=NULL, interval=NULL, detail=FALSE)
 }
 
@@ -28,7 +33,7 @@ gamma is the sensitivity parameter, gamma=1 for a randomization test, gamma>1 fo
 \item{lambda}{Observations are scaled by the lambda quantile of the absolute pair differences.  See the help file for senmw for more information.}
 \item{m1}{One of three parameters that determine the weights.  See the discussion of m below.}
 \item{m2}{One of three parameters that determine the weights.  See the discussion of m below.}
-\item{m}{One of three parameters that determine the weights.  See the help file for senmw for more information.  m2<m is not available for confidence intervals.} 
+\item{m}{One of three parameters that determine the weights.  See the help file for senmw for more information.  m2<m is not available for confidence intervals.}
 \item{alpha}{1-alpha is the coverage of the confidence interval.}
 \item{one.sided}{If TRUE, the confidence interval is one sided.  If FALSE, the confidence interval is two-sided.  The default is one-sided.}
 \item{tol}{The senmwCI function calls the R function uniroot, and tol is the tol (or tolerance) parameter in that call.  If tol=NULL, senmwCI picks a reasonable tolerance.}
@@ -44,11 +49,21 @@ gamma is the sensitivity parameter, gamma=1 for a randomization test, gamma>1 fo
 }
 
 \references{
-Main references:
+Huber, P. (1981) Robust Statistics.  New York: Wiley, 1981.
 
-Rosenbaum, P. R. (2007) Sensitivity analysis for m-estimates, tests and confidence intervals in matched observational studies.  Biometrics, 2007, 63, 456-464.  Discusses the unweighted statistics.
+Maritz, J. S. (1979) Exact robust confidence intervals for location.  Biometrika 1979, 66, 163-166. <doi:10.1093/biomet/66.1.163>
 
-Rosenbaum, P. R. (2014) Weighted M-statistics with superior design sensitivity in matched observational studies with multiple controls.  Journal of the American Statistical Association, 2014. DOI: 10.1080/01621459.2013.879261  This paper is the main reference for weighted M-statistics and for the sensitivitymw package.
+Rosenbaum, P. R. (2007) Sensitivity analysis for m-estimates, tests and confidence intervals in matched observational studies.  Biometrics, 2007, 63, 456-464. <doi:10.1111/j.1541-0420.2006.00717.x>
+
+Rosenbaum, P. R. (2013) Impact of multiple matched controls on design sensitivity in observational studies.  Biometrics, 2013, 69, 118-127.
+<doi:10.1111/j.1541-0420.2012.01821.x>
+
+Rosenbaum, P. R. (2014) Weighted M-statistics with superior design sensitivity in matched observational studies with multiple controls.  Journal of the American Statistical Association, 109(507), 1145-1158
+<doi:10.1080/01621459.2013.879261>  This paper is the main reference for
+weighted M-statistics and for the sensitivitymw package.
+
+Rosenbaum, P. R. (2015). Two R packages for sensitivity analysis in observational studies. Observational Studies, 1(2), 1-17.  The Observational Studies journal is available free on-line.
+<10.1353/obs.2015.0000>  This article discusses and illustrates the use of the current package.
 
 }
 \author{
@@ -56,9 +71,9 @@ Paul R. Rosenbaum
 }
 
 \note{
-senmwCI inverts a test to obtain confidence intervals and point estimats; so, it calls senmw many times, solving several equations, and senmwCI is much slower than a single call to senmw.  senmwCI finds point estimates and confidence intervals by searching for a value of the parameter tau in "interval" determining the solution tau.hat to an estimating equation with an error of "tol" in solving the equation.  If interval=NULL and tol=NULL, senmwCI tries to pick a reasonable finite interval and tol>0.  If concerned about these "reasonable values", set detail=TRUE, make the interval longer, the tol smaller, and wait longer for program to run.  As illustrated in the examples, if there is reason for concern, the solutions produced by senmwCI can be checked by running senmw with tau set to the endpoints of the various intervals. 
+senmwCI inverts a test to obtain confidence intervals and point estimats; so, it calls senmw many times, solving several equations, and senmwCI is much slower than a single call to senmw.  senmwCI finds point estimates and confidence intervals by searching for a value of the parameter tau in "interval" determining the solution tau.hat to an estimating equation with an error of "tol" in solving the equation.  If interval=NULL and tol=NULL, senmwCI tries to pick a reasonable finite interval and tol>0.  If concerned about these "reasonable values", set detail=TRUE, make the interval longer, the tol smaller, and wait longer for program to run.  As illustrated in the examples, if there is reason for concern, the solutions produced by senmwCI can be checked by running senmw with tau set to the endpoints of the various intervals.
 
-Unlike senmw, senmwCI does not permit redescending rank scores, m2<m or method="l". 
+Unlike senmw, senmwCI does not permit redescending rank scores, m2<m or method="l".
 }
 
 
@@ -67,10 +82,10 @@ Unlike senmw, senmwCI does not permit redescending rank scores, m2<m or method="
 data(mercury)
 senmwCI(mercury,gamma=2,method="w",one.sided=FALSE,detail=TRUE)
 
-#The following example reproduces part of Table 1 in Rosenbaum (2007).  
-#In particular, the one-sided .95 confidence interval is tau >= 0.1812, 
-#and the P-value testing tau=0.1812 is 0.05.  
-#Similarly, the test statistic equals its null expectation at tau=0.3403, 
+#The following example reproduces part of Table 1 in Rosenbaum (2007).
+#In particular, the one-sided .95 confidence interval is tau >= 0.1812,
+#and the P-value testing tau=0.1812 is 0.05.
+#Similarly, the test statistic equals its null expectation at tau=0.3403,
 #and when evaluated at -yrpcp the same thing happens at tau=-0.6666.
 data(erpcp)
 senmwCI(erpcp,gamma=2,trim=1,m1=1,m2=1,m=1)
@@ -79,8 +94,8 @@ senmw(erpcp,gamma=2,trim=1,m1=1,m2=1,m=1,tau=0.3403)
 senmw(-erpcp,gamma=2,trim=1,m1=1,m2=1,m=1,tau=-0.6666)
 
 
-#This example illustrates the relationship between senmwCI and senmw.  
-#Note that the endpoints from senmwCI are tested by senmw.  
+#This example illustrates the relationship between senmwCI and senmw.
+#Note that the endpoints from senmwCI are tested by senmw.
 #Also for illustration, the search interval in this case is specified as from 0 to 5.
 senmwCI(mercury,gamma=2,method="w",detail=TRUE,interval=c(0,5),one.sided=FALSE)
 senmw(mercury,gamma=2,method="w",tau=2.03135)

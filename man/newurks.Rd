@@ -1,6 +1,6 @@
 \name{newurks}
 \alias{newurks}
-	
+
 \title{
 	Approximate scores for ranks of row ranges.
 }
@@ -30,8 +30,10 @@ newurks(smat, m1 = 2, m2 = 2, m = 2)
 }
 \references{
 	Rosenbaum, P. R. (2011) A new u-statistic with superior design sensitivity in matched observational studies.  Biometrics 67, 1017-1027.
-	
-	Rosenbaum, P. R. (2014) Weighted M-statistics with superior design sensitivity in matched observational studies with multiple controls.  Journal of the American Statistical Association, 2014. DOI: 10.1080/01621459.2013.879261
+<doi:10.1111/j.1541-0420.2010.01535.x>
+
+	Rosenbaum, P. R. (2014) Weighted M-statistics with superior design sensitivity in matched observational studies with multiple controls.  Journal of the American Statistical Association, 109(507), 1145-1158.
+<doi:10.1080/01621459.2013.879261>
 }
 \author{
 	Paul R. Rosenbaum
@@ -41,4 +43,3 @@ newurks(smat, m1 = 2, m2 = 2, m = 2)
 	data(mercury)
  	head(newurks(mscorev(mercury)))
 }
-

@@ -4,8 +4,8 @@
 	Approximate scores for ranks.
 }
 \description{
-	Of limited interest to most users, this function is called by senmw.  The function calculates the large sample approximation to a rank score transformation in Lemma 1, expression (9) of Rosenbaum (2011).  
-	
+	Of limited interest to most users, this function is called by senmw.  The function calculates the large sample approximation to a rank score transformation in Lemma 1, expression (9) of Rosenbaum (2011).
+
 	For numerical stability in large problems, the approximate rank score transformation in expression (9) of Rosenbaum (2011) is used in place of the exact rank score transformation in expression (8) of Rosenbaum (2011) and expression (5) of Rosenbaum (2014).  Exact and approximate rank scores yield similar bounds on P-values.  The exact rank scores involve very large combinatorial coefficiences when the same size is very large, whereas the nearly equivalent approximate scores do not.
 }
 \usage{
@@ -30,9 +30,11 @@ multrnks(rk, m1 = 2, m2 = 2, m = 2)
 	Vector of length(rk) containing the scores for the ranks in rk.
 }
 \references{
-	Rosenbaum, P. R. (2011) A new u-statistic with superior design sensitivity in matched observational studies.  Biometrics 67, 1017-1027.
-	
-	Rosenbaum, P. R. (2014) Weighted M-statistics with superior design sensitivity in matched observational studies with multiple controls.  Journal of the American Statistical Association, 2014. DOI: 10.1080/01621459.2013.879261
+	Rosenbaum, P. R. (2011) A new U-statistic with superior design sensitivity in matched observational studies.  Biometrics 67, 1017-1027.
+<doi:10.1111/j.1541-0420.2010.01535.x>
+
+	Rosenbaum, P. R. (2014) Weighted M-statistics with superior design sensitivity in matched observational studies with multiple controls.  Journal of the American Statistical Association, 109(507), 1145-1158
+<doi:10.1080/01621459.2013.879261>
 }
 \author{
 	Paul R. Rosenbaum
@@ -42,4 +44,3 @@ multrnks(rk, m1 = 2, m2 = 2, m = 2)
 	multrnks(1:10)
 	multrnks(1:10,m1=12,m2=20,m=20)
 }
-

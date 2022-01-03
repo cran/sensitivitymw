@@ -16,7 +16,7 @@ mscorev(ymat, inner = 0, trim = 2.5, qu = 0.5, TonT = FALSE)
 ymat is a matrix as described in the documentation for senmw or senmv.
 }
   \item{inner}{
-inner is the parameter described in the documentation for senmw or senmv.
+inner is the parameter described in the documentation for senmw or senmv.  See Rosenbaum (2013).
 }
   \item{trim}{
 trim is the parameter described in the documentation for senmw or senmv.
@@ -31,9 +31,13 @@ qu is the lambda parameter described in the documentation for senmw or senmv.
 Generally, a matrix with the same dimensions as ymat containing the M-scores.
 }
 \references{
-Rosenbaum, P. R. (2007) Sensitivity analysis for m-estimates, tests and confidence intervals in matched observational studies.  Biometrics, 2007, 63, 456-464.
+Rosenbaum, P. R. (2007) Sensitivity analysis for m-estimates, tests and confidence intervals in matched observational studies.  Biometrics, 2007, 63, 456-464. <doi:10.1111/j.1541-0420.2006.00717.x>
 
-Rosenbaum, P. R. (2014) Weighted M-statistics with superior design sensitivity in matched observational studies with multiple controls.  Journal of the American Statistical Association, 2014. DOI: 10.1080/01621459.2013.879261
+Rosenbaum, P. R. (2013) Impact of multiple matched controls on design sensitivity in observational studies.  Biometrics, 2013, 69, 118-127.
+<doi:10.1111/j.1541-0420.2012.01821.x>
+
+Rosenbaum, P. R. (2014) Weighted M-statistics with superior design sensitivity in matched observational studies with multiple controls.  Journal of the American Statistical Association, 2014.
+<doi:10.1080/01621459.2013.879261>
 }
 \author{
 Paul R. Rosenbaum
